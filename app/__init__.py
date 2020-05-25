@@ -3,7 +3,7 @@ from flask import Flask
 from config.database.enviroment_variable import get_env_variable
 from flask_migrate import Migrate
 from blueprint.bp_home import home_bp
-from blueprint.bp_session import session_bp
+from blueprint.bp_user import session_bp
 
 from config.database.model import configure as db_config
 
@@ -15,8 +15,6 @@ POSTGRES_URL = get_env_variable("POSTGRES_URL")
 POSTGRES_USER = get_env_variable("POSTGRES_USER")
 POSTGRES_PW = get_env_variable("POSTGRES_PW")
 POSTGRES_DB = get_env_variable("POSTGRES_DB")
-
-print(POSTGRES_URL)
 
 DB_URL = 'postgresql+psycopg2://{user}:{passw}@{port}/{db}'.format(user=POSTGRES_USER, passw=POSTGRES_PW, port=POSTGRES_URL, db=POSTGRES_DB)
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
